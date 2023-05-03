@@ -1,21 +1,20 @@
 using UnityEngine;
 
-namespace Meangpu
+namespace Meangpu.timer
 {
     public class Timer : MonoBehaviour
     {
-        bool _isCounting;
-        private float _secondsCount;
-        private int _minuteCount;
-        private int _hourCount;
-        private string _textTimer;
+        protected bool _isCounting;
+        protected float _secondsCount;
+        protected int _minuteCount;
+        protected int _hourCount;
 
         int GetTimeSecond() => (int)((_hourCount * 360) + (_minuteCount * 60) + _secondsCount);
 
-        void CountStart() => _isCounting = true;
-        void CountStop() => _isCounting = false;
+        protected void CountStart() => _isCounting = true;
+        protected void CountStop() => _isCounting = false;
 
-        void RestartTimer()
+        protected void RestartTimer()
         {
             _secondsCount = 0;
             _minuteCount = 0;
@@ -27,13 +26,12 @@ namespace Meangpu
 
         void Update() => UpdateTimerUI();
 
-        void UpdateTimerUI()
+        virtual protected void UpdateTimerUI()
         {
             if (!_isCounting) return;
 
             _secondsCount += Time.deltaTime;
-            _textTimer = $"{_minuteCount:D2}:{(int)_secondsCount:D2}";
-            // timerText.text = finalText;
+
             if (_secondsCount >= 60)
             {
                 _minuteCount++;
@@ -46,7 +44,7 @@ namespace Meangpu
             }
         }
 
-        void AddTimerSec(float addNum)
+        protected void AddTimerSec(float addNum)
         {
             _secondsCount += addNum;
             UpdateTimerUI();
