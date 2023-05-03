@@ -1,4 +1,3 @@
-using UnityEngine;
 using TMPro;
 
 namespace Meangpu.timer
@@ -6,7 +5,7 @@ namespace Meangpu.timer
     public class TimerTextDisplay : Timer
     {
         private string _textTimer;
-        [SerializeField] TMP_Text _text;
+        public TMP_Text _text;
 
         protected override void UpdateTimerUI()
         {
