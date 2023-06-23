@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Meangpu.Timer
 {
-    public class Timer : MonoBehaviour
+    public class TimerCountUp : MonoBehaviour
     {
         protected bool _isCounting;
         protected float _secondsCount;
@@ -14,24 +14,33 @@ namespace Meangpu.Timer
         protected void CountStart() => _isCounting = true;
         protected void CountStop() => _isCounting = false;
 
-        protected void RestartTimer()
+        protected void ResetTimer()
         {
             _secondsCount = 0;
             _minuteCount = 0;
             _hourCount = 0;
             CountStop();
 
-            UpdateTimerUI();
+            DoTimeTick();
         }
 
-        void Update() => UpdateTimerUI();
+        void Update() => DoTimeTick();
 
-        virtual protected void UpdateTimerUI()
+        virtual protected void DoTimeTick()
         {
             if (!_isCounting) return;
-
             _secondsCount += Time.deltaTime;
+            ConvertSecondToMinuteHour();
+        }
 
+        virtual protected void SetupTimer(float startSecond)
+        {
+            _secondsCount = startSecond;
+            DoTimeTick();
+        }
+
+        protected void ConvertSecondToMinuteHour()
+        {
             if (_secondsCount >= 60)
             {
                 _minuteCount++;
@@ -47,7 +56,7 @@ namespace Meangpu.Timer
         protected void AddTimerSec(float addNum)
         {
             _secondsCount += addNum;
-            UpdateTimerUI();
+            DoTimeTick();
         }
     }
 }
