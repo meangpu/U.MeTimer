@@ -2,7 +2,7 @@ using TMPro;
 
 namespace Meangpu.Timer
 {
-    public class TimerTextDisplay : Timer
+    public class TimerCountDownTextDisplay : TimerCountDown
     {
         private string _textTimer;
         public TMP_Text _text;
@@ -10,7 +10,7 @@ namespace Meangpu.Timer
         protected override void UpdateTimerUI()
         {
             base.UpdateTimerUI();
-            _textTimer = $"{_minuteCount:D2}:{(int)_secondsCount:D2}";
+            _textTimer = $"{(int)_secondsCount:D2}";
             _text.SetText(_textTimer);
         }
     }

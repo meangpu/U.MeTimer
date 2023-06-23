@@ -1,8 +1,9 @@
+using TMPro;
 using UnityEngine;
 
 namespace Meangpu.Timer
 {
-    public class Timer : MonoBehaviour
+    public class TimerCountDown : MonoBehaviour
     {
         protected bool _isCounting;
         protected float _secondsCount;
@@ -14,13 +15,9 @@ namespace Meangpu.Timer
         protected void CountStart() => _isCounting = true;
         protected void CountStop() => _isCounting = false;
 
-        protected void RestartTimer()
+        virtual protected void SetupTimer(float startSecond)
         {
-            _secondsCount = 0;
-            _minuteCount = 0;
-            _hourCount = 0;
-            CountStop();
-
+            _secondsCount = startSecond;
             UpdateTimerUI();
         }
 
@@ -30,7 +27,7 @@ namespace Meangpu.Timer
         {
             if (!_isCounting) return;
 
-            _secondsCount += Time.deltaTime;
+            _secondsCount -= Time.deltaTime;
 
             if (_secondsCount >= 60)
             {

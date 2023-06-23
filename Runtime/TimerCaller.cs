@@ -1,8 +1,7 @@
-using Meangpu.timer;
-
-public class TimerCaller : TimerTextDisplay
+namespace Meangpu.Timer
 {
-    private void Start() => CountStart();
-
-    // feel free to use event action to call 
+    public class TimerCaller : TimerTextDisplay
+    {
+        // feel free to use event action to call "CountStart"
+    }
 }
