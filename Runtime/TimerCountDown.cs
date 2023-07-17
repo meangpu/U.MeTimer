@@ -1,4 +1,3 @@
-using System;
 namespace Meangpu.Timer
 {
     public class TimerCountDown : Timer
