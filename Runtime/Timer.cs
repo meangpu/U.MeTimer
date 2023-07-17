@@ -72,7 +72,7 @@ namespace Meangpu.Timer
             UpdateTextUI();
         }
 
-        protected string GetSecString() => _secondsCount.ToString();
+        protected string GetSecString() => GetTimeSecond().ToString();
         protected string GetMinSecString() => $"{_minuteCount:D2}:{(int)_secondsCount:D2}";
         protected string GetHourMinSecString() => $"{_hourCount:D2}:{_minuteCount:D2}:{(int)_secondsCount:D2}";
 
