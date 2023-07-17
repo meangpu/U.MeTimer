@@ -24,13 +24,13 @@ namespace Meangpu.Timer
 
         private void Start() => _text = GetComponent<TMP_Text>();
 
-        protected void ResetTimer()
+        virtual protected void ResetTimer()
         {
             _secondsCount = 0;
             _minuteCount = 0;
             _hourCount = 0;
             CountStop();
-            DoTimeTick();
+            UpdateTextUI();
         }
 
         virtual protected void DoTimeTick()
