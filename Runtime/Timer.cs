@@ -4,7 +4,6 @@ using TMPro;
 
 namespace Meangpu.Timer
 {
-    [RequireComponent(typeof(TMP_Text))]
     public class Timer : MonoBehaviour
     {
         protected bool _isCounting;
@@ -22,7 +21,10 @@ namespace Meangpu.Timer
 
         [SerializeField] TMP_Text _text;
 
-        private void Start() => _text = GetComponent<TMP_Text>();
+        private void Start()
+        {
+            if (_text == null) _text = GetComponent<TMP_Text>();
+        }
 
         virtual protected void ResetTimer()
         {
