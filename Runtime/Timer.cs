@@ -39,7 +39,7 @@ namespace Meangpu.Timer
             _secondsCount = 0;
             _minuteCount = 0;
             _hourCount = 0;
-            CountStop();
+            DoStopTimer();
             UpdateTextUI();
         }
 
