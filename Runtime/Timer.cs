@@ -17,10 +17,14 @@ namespace Meangpu.Timer
 
         protected int GetTimeSecond() => (int)((_hourCount * 360) + (_minuteCount * 60) + _secondsCount);
         protected void CountStart() => _isCounting = true;
-        protected void CountStop()
+
+        protected void CountStop() => _isCounting = false;
+
+        protected void DoStopTimer()
         {
-            _isCounting = false;
+            CountStop();
             StopAllCoroutines();
+            TimerEnumerator = null;
         }
 
         [SerializeField] TMP_Text _text;
@@ -63,7 +67,7 @@ namespace Meangpu.Timer
                 yield return _waitTime;
                 if (IsTimerIsUp())
                 {
-                    CountStop();
+                    DoStopTimer();
                     break;
                 }
             }
