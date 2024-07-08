@@ -6,6 +6,8 @@ namespace Meangpu.Timer
     public class TimerCountDown : Timer
     {
         [SerializeField] UnityEvent _onTimeReachZero;
+        protected float _maxTimer;
+
         protected override void Tick()
         {
             _secondsCount--;
@@ -22,6 +24,12 @@ namespace Meangpu.Timer
         {
             SetupTimer(secondCountDown);
             DoStartTimer();
+        }
+
+        public override void SetupTimer(float startSecond)
+        {
+            base.SetupTimer(startSecond);
+            _maxTimer = startSecond;
         }
 
         protected override bool IsTimerIsUp() => GetTimeSecond() <= 0;
