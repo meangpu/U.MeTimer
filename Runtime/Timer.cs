@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using VInspector;
 
 namespace Meangpu.Timer
 {
@@ -20,7 +21,8 @@ namespace Meangpu.Timer
 
         protected void CountStop() => _isCounting = false;
 
-        protected void DoStopTimer()
+        [Button]
+        public void DoStopTimer()
         {
             CountStop();
             StopAllCoroutines();
@@ -34,7 +36,8 @@ namespace Meangpu.Timer
             if (_text == null) _text = GetComponent<TMP_Text>();
         }
 
-        virtual protected void ResetTimer()
+        [Button]
+        virtual public void ResetTimer()
         {
             _secondsCount = 0;
             _minuteCount = 0;
@@ -73,6 +76,7 @@ namespace Meangpu.Timer
             }
         }
 
+        [Button]
         virtual public void DoStartTimer()
         {
             _isCounting = true;
@@ -80,7 +84,7 @@ namespace Meangpu.Timer
             StartCoroutine(TimerEnumerator);
         }
 
-        virtual protected void SetupTimer(float startSecond)
+        virtual public void SetupTimer(float startSecond)
         {
             _secondsCount = startSecond;
             UpdateTextUI();

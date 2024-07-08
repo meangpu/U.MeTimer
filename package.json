@@ -1,6 +1,6 @@
 {
   "name": "com.meangpu.timer",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "unity": "2021.3",
   "displayName": "MeTimer",
   "description": "timer count down",
