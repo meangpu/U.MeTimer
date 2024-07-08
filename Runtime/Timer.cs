@@ -16,7 +16,7 @@ namespace Meangpu.Timer
         protected WaitForSecondsRealtime _waitTime = new(1);
         protected IEnumerator TimerEnumerator;
 
-        protected int GetTimeSecond() => (int)((_hourCount * 360) + (_minuteCount * 60) + _secondsCount);
+        public int GetTimeSecond() => (int)((_hourCount * 360) + (_minuteCount * 60) + _secondsCount);
         protected void CountStart() => _isCounting = true;
 
         protected void CountStop() => _isCounting = false;
