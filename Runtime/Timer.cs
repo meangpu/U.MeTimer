@@ -18,7 +18,6 @@ namespace Meangpu.Timer
 
         public int GetTimeSecond() => (int)((_hourCount * 360) + (_minuteCount * 60) + _secondsCount);
         protected void CountStart() => _isCounting = true;
-
         protected void CountStop() => _isCounting = false;
 
         [Button]
@@ -39,11 +38,18 @@ namespace Meangpu.Timer
         [Button]
         virtual public void ResetTimer()
         {
+            DoStopTimer();
             _secondsCount = 0;
             _minuteCount = 0;
             _hourCount = 0;
-            DoStopTimer();
             UpdateTextUI();
+        }
+
+        [Button]
+        virtual public void RestartTimer()
+        {
+            ResetTimer();
+            DoStartTimer();
         }
 
         virtual protected void DoTimeTick()
