@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using VInspector;
 
 namespace Meangpu.Timer
 {
@@ -20,11 +21,22 @@ namespace Meangpu.Timer
             ConvertSecondToMinuteHour();
         }
 
+        [Button]
         public void DoStartTimerDown(float secondCountDown)
         {
             SetupTimer(secondCountDown);
             DoStartTimer();
         }
+
+        public override void ResetTimer()
+        {
+            DoStopTimer();
+            _minuteCount = 0;
+            _hourCount = 0;
+            _secondsCount = _maxTimer;
+            UpdateTextUI();
+        }
+
 
         public override void SetupTimer(float startSecond)
         {
