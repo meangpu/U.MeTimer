@@ -22,7 +22,7 @@ namespace Meangpu.Timer
         }
 
         [Button]
-        public void DoStartTimerDown(float secondCountDown)
+        public void DoStartTimerDown(float secondCountDown = 5)
         {
             SetupTimer(secondCountDown);
             DoStartTimer();
